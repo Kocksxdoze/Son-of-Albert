@@ -1,6 +1,7 @@
 import math
 
-def dot(v1: list[float], v2: list[float]) -> float: # Алгоритм скалярного произведения
+# Алгоритм скалярного произведения
+def dot(v1: list[float], v2: list[float]) -> float: 
     total = 0.0
     if len(v1) != len(v2):
         raise ValueError("Векторы должны быть одинаковой длины!")
@@ -9,13 +10,15 @@ def dot(v1: list[float], v2: list[float]) -> float: # Алгоритм скал�
         total += v1[i] * v2[i]
     return total
 
-def vector_magnitude(v: list[float]) -> float: # длинна вектора (Евклидова норма/ L2)
+# длина вектора (Евклидова норма/ L2)
+def vector_magnitude(v: list[float]) -> float: 
     total = 0.0
     for i in v:
         total += i**2
     return math.sqrt(total)
 
-def cs(v1:list[float], v2:list[float]): # косинусное сходство
+# косинусное сходство
+def cs(v1:list[float], v2:list[float]): 
     high = dot(v1,v2)
     low = vector_magnitude(v1) * vector_magnitude(v2)
 
@@ -24,7 +27,8 @@ def cs(v1:list[float], v2:list[float]): # косинусное сходство
 
     return high / low
 
-def matrix_vector(matrix: list[list[float]], vector:list[float]) -> list[float]: # алгоритм прямого прохода слоя нейросети
+# алгоритм прямого прохода слоя нейросети
+def matrix_vector(matrix: list[list[float]], vector:list[float]) -> list[float]: 
     result = []
 
     if len(matrix[0]) != len(vector):
@@ -36,7 +40,8 @@ def matrix_vector(matrix: list[list[float]], vector:list[float]) -> list[float]:
 
 print(matrix_vector([ [1.0, 2.0],[3.0, 4.0]],[0.5, 2.0]))
 
-def matrix_transpose(matrix: list[list[float]]) -> list[list[float]]: # поворот матрицы
+# поворот матрицы
+def matrix_transpose(matrix: list[list[float]]) -> list[list[float]]: 
     transpose = []
     num_cols = len(matrix[0])
     num_rows = len(matrix)
@@ -49,13 +54,3 @@ def matrix_transpose(matrix: list[list[float]]) -> list[list[float]]: # пово
     return transpose
 
 print(matrix_transpose([[1, 2], [3, 4], [5, 6]]))
-    
-
-
-normal = [80.0, 500.0, 0.1]        
-suspicious = [80.0, 510.0, 0.11]    
-ddos = [443.0, 150000.0, 0.0001]    
-
-
-# print(cs(normal, suspicious))
-# print(cs(normal,ddos))
