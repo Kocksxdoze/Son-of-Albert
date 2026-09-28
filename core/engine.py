@@ -20,7 +20,7 @@ class Value:
             other.grad += 1.0 * out.grad
         out._backward = _backward
         return out
-
+    
     def __radd__(self, other):
         return self + other
 
